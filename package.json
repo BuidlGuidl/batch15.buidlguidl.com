@@ -51,10 +51,15 @@
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10"
   },
   "engines": {
     "node": ">=20.18.3"
+  },
+  "dependencies": {
+    "lucide-react": "^0.488.0"
   }
 }
