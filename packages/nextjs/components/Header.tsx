@@ -26,6 +26,10 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
   },
+  /*{
+    label: "Qulink Profile",
+    href: "/builders/0x926Afc6eB53BBb32B55CEDe50946f2866Dfca2Fc",
+  },*/
 ];
 
 export const HeaderMenuLinks = () => {
