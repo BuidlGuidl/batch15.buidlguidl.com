@@ -16689,6 +16689,7 @@ __metadata:
   dependencies:
     husky: ^9.1.6
     lint-staged: ^15.2.10
+    react-icons: ^5.5.0
   languageName: unknown
   linkType: soft
 
