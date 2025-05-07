@@ -4,8 +4,8 @@ import { Address } from "~~/components/scaffold-eth";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Builder Profile",
-  description: "View builder profile and recent contributions",
+  title: "Alanwiz | Builder Profile",
+  description: "Builder's profile page and recent contributions",
 });
 
 interface BuildItem {
@@ -19,8 +19,8 @@ const role = "Full Stack Developer";
 const bio =
   "I'm passionate about building innovative Web Apps and exploring the limitless potential of the blockchain technology.";
 const avatarUrl = "/hacker.png";
-const builderAddress = "0x77Ceb3b02B129dF62B252C80Dd775009359dBcE3";
-const address = <Address address={builderAddress} />;
+const hoverClass =
+  "hover:bg-gray-200 dark:hover:bg-gray-600 group-hover:text-indigo-800 dark:group-hover:text-indigo-300 group-hover:opacity-100";
 const recentBuilds: BuildItem[] = [
   {
     name: "Dice Game",
@@ -34,50 +34,44 @@ const recentBuilds: BuildItem[] = [
   },
 ];
 
-const SOCIAL_LINKS_CONFIG = [
+const SOCIAL_LINKS = [
   {
     key: "github",
+    url: "https://github.com/Alanwiz00",
     icon: FaGithub,
+    hoverClass: "hover:text-indigo-600 dark:hover:text-indigo-400",
     color: "indigo-600",
     ariaLabel: "GitHub",
     size: 40,
   },
   {
     key: "twitter",
+    url: "https://twitter.com/Z3R0_PA",
     icon: FaTwitter,
+    hoverClass: "hover:text-blue-400 dark:hover:text-blue-600",
     color: "blue-400",
     ariaLabel: "Twitter",
     size: 40,
   },
   {
     key: "linkedin",
+    url: "https://www.linkedin.com/in/alanwiz/",
     icon: FaLinkedin,
+    hoverClass: "hover:text-blue-400 dark:hover:text-blue-300",
     color: "blue-600",
     ariaLabel: "LinkedIn",
     size: 40,
   },
   {
     key: "website",
+    url: "https://app.buidlguidl.com/builders/0x77Ceb3b02B129dF62B252C80Dd775009359dBcE3",
     icon: FaGlobe,
+    hoverClass: "hover:text-purple-500 dark:hover:text-purple-400",
     color: "purple-500",
     ariaLabel: "Website",
     size: 40,
   },
 ] as const;
-
-interface SocialLinks {
-  github?: string;
-  twitter?: string;
-  linkedin?: string;
-  website?: string;
-}
-
-const socialLinks = {
-  github: "https://github.com/Alanwiz00",
-  twitter: "https://twitter.com/Z3R0_PA",
-  linkedin: "https://www.linkedin.com/in/alanwiz/",
-  website: "https://app.buidlguidl.com/builders/0x77Ceb3b02B129dF62B252C80Dd775009359dBcE3",
-};
 
 const AlanwizBuilderPage: NextPage = () => {
   return (
@@ -99,7 +93,9 @@ const AlanwizBuilderPage: NextPage = () => {
 
         <div className="text-center">
           <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{bio}</p>
-          <p className="text-gray-500 dark:text-gray-400 text-xs mt-2">{address}</p>
+        </div>
+        <div className="text-xs text-gray-500">
+          <Address address="0x77Ceb3b02B129dF62B252C80Dd775009359dBcE3" />
         </div>
       </div>
 
@@ -132,18 +128,14 @@ const AlanwizBuilderPage: NextPage = () => {
                 href={build.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center p-2 rounded group bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                className={`flex items-center p-2 rounded group bg-gray-100 dark:bg-gray-700 ${hoverClass}transition-colors`}
               >
-                <div className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0 group-hover:text-indigo-800 dark:group-hover:text-indigo-300">
+                <div className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0">
                   <FaCode />
                 </div>
                 <div>
-                  <div className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-indigo-800 dark:group-hover:text-indigo-300">
-                    {build.name}
-                  </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400 opacity-90 group-hover:opacity-100">
-                    {build.description}
-                  </div>
+                  <div className="text-sm font-medium text-gray-800 dark:text-gray-200">{build.name}</div>
+                  <div className="text-xs text-gray-600 dark:text-gray-400 opacity-90">{build.description}</div>
                 </div>
               </a>
             ))}
@@ -152,8 +144,7 @@ const AlanwizBuilderPage: NextPage = () => {
 
         {/* Social Links */}
         <div className="flex space-x-4 mx-auto">
-          {SOCIAL_LINKS_CONFIG.map(({ key, icon: Icon, color, ariaLabel, size }) => {
-            const url = socialLinks[key as keyof SocialLinks];
+          {SOCIAL_LINKS.map(({ key, url, icon: Icon, hoverClass, ariaLabel, size }) => {
             if (!url) return null;
 
             return (
@@ -162,10 +153,7 @@ const AlanwizBuilderPage: NextPage = () => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-gray-700 dark:text-gray-300 hover:text-${color} dark:hover:text-${color.replace(
-                  "-",
-                  "-",
-                )} transition-colors`}
+                className={`text-gray-700 dark:text-gray-300 ${hoverClass} transition-colors`}
                 aria-label={ariaLabel}
               >
                 <Icon size={size} />
