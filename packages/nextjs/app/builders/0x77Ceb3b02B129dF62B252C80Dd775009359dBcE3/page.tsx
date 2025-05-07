@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { NextPage } from "next";
 import { FaCode, FaGithub, FaGlobe, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Address } from "~~/components/scaffold-eth";
@@ -79,10 +80,12 @@ const AlanwizBuilderPage: NextPage = () => {
       {/* Avatar & Bio Section */}
       <div className="md:w-1/3 p-6 flex flex-col items-center">
         <div className="relative mb-4">
-          <img
+          <Image
             className="w-32 h-32 rounded-full object-cover border-4 border-white dark:border-gray-700 shadow-md"
             src={avatarUrl}
             alt={`${name}'s avatar`}
+            width={128}
+            height={128}
           />
           <div className="absolute -bottom-2 -right-2 bg-white dark:bg-gray-700 rounded-full p-1 shadow-sm">
             <div className="bg-green-400 dark:bg-green-500 rounded-full w-6 h-6 flex items-center justify-center">
